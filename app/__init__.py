@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 from config import Config
 from extensions import db, csrf, login_manager
 from app.models.user import User
@@ -36,6 +36,7 @@ def create_app(config_class: type[Config] = Config):
     @app.route("/")
     def home():
         return redirect(url_for('users.index'))
+        # return render_template("layouts/sample.html")
 
     # Create tables
     with app.app_context():
