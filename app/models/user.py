@@ -2,7 +2,7 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from extensions import db
-from app.models.associations import user_roles, user_transactions, user_budgets, user_recommendations,user_expertRules
+from app.models.associations import user_roles
 
 
 class User(UserMixin, db.Model):
@@ -19,10 +19,7 @@ class User(UserMixin, db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     roles = db.relationship("Role", secondary=user_roles, back_populates="users")
-    transactions = db.relationship("Transactions", secondary=user_transactions, back_populates="users" )
-    budgets = db.relationship("Budget", secondary=user_budgets, back_populates="users")
-    # recommendations = db.relationship("Recommendation", secondary=user_recommendations, back_populates="users")
-    expert_rules = db.relationship("ExpertRule", secondary=user_expertRules, back_populates="users")
+    transactions = db.relationship("Transaction", backref="user", lazy=True)
 
     # convenience helpers
     def set_password(self, password: str) -> None:

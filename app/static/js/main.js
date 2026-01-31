@@ -18,3 +18,11 @@ document.addEventListener("DOMContentLoad", () => {
         msg.className = strong ? "form-text text-success" : "form-text text-danger";
     })
 })
+
+flatpickr("#datetimepicker", {
+    enableTime: true,
+    dateFormat: "m/d/Y h:i K",
+    time_24hr: false,
+    minuteIncrement: 5,
+    allowInput: true
+});

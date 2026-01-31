@@ -1,0 +1,21 @@
+
+{% extends "base.html" %}
+{% block title %} User {{ user.username }}{% endblock  %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<p>Income: {{ report.income }}</p>
+<p>Expense: {{ report.expense }}</p>
+<p>Balance: {{ report.balance }}</p>
+
+<ul>
+{% for tip in report.tips %}
+    <li>{{ tip }}</li>
+{% endfor %}
+</ul>
+
+<a href="/create">➕ Add Transaction</a>
+<a href="/logout">Logout</a>
+{% endblock %}
