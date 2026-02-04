@@ -11,11 +11,13 @@ class Category(db.Model):
 
 
 class Budget(db.Model):
+    __tablename__ = "budgets"
     id = db.Column(db.Integer, primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     amount = db.Column(db.Float, nullable=False)
     
 class Expense(db.Model):
+    __tablename__="expenses"
     id = db.Column(db.Integer, primary_key=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     amount = db.Column(db.Float, nullable=False)

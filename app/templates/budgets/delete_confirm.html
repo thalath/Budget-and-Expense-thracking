@@ -1,0 +1,24 @@
+{% extends "layouts/base.html" %}
+{% block title %}Delete Category{% endblock  %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="h4 text-danger">Confirm Delete</h3>
+        
+        <p class="mt-3">Are you sure you want to delete the following Category?</p>
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item"><strong>ID :</strong>{{ budgets.id }}</li>
+            <li class="list-group-item"><strong>Category Name:</strong>{{ budgets.amount }}</li>
+        </ul>
+
+        <form method="POST" action="{{ url_for('budgets.delete', budget_id=budgets.id) }}">
+            {{ form.hidden_tag() }}
+            {{ form.submit(class="btn btn-danger") }}
+            <a href="{{ url_for('budgets.index') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

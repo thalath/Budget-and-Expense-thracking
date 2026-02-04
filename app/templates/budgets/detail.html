@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% block title %}budget's ID: {{ budgets.id }}{% endblock  %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Category Detail</h1>
+    <div>
+        <a href="{{ url_for('budgets.edit', category_id=category.id) }}" 
+           class="btn btn-sm btn-outline-secondary">Edit</a>
+        <a href="{{ url_for('budgets.index') }}" 
+           class="btn btn-sm btn-outline-primary">Back to list</a>
+    </div>
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Budget ID </dt>
+    <dd class="col-sm-9">{{ budget.id }}</dd>
+
+    <dt class="col-sm-3">Budget Amount</dt>
+    <dd class="col-sm-9">{{ budget.amount }}</dd>
+</dl>
+
+{% endblock %}

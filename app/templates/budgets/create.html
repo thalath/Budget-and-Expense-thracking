@@ -1,0 +1,9 @@
+{% extends "layouts/base.html" %}
+{% block title %}Create Category{% endblock  %}
+
+{% block content %}
+<h1 class="h3 mb-3"> Create User </h1>
+<form method="post", novalidate>
+    {% include "budgets/_form.html" %}
+</form>
+{% endblock %}
