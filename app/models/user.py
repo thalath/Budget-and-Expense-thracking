@@ -19,7 +19,7 @@ class User(UserMixin, db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     roles = db.relationship("Role", secondary=user_roles, back_populates="users")
-    transactions = db.relationship("Transaction", backref="user", lazy=True)
+    # transactions = db.relationship("Transaction", backref="user", lazy=True)
 
     # convenience helpers
     def set_password(self, password: str) -> None:

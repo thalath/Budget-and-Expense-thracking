@@ -26,25 +26,27 @@ def create_app(config_class: type[Config] = Config):
     from app.routes.role_routes import role_bp
     from app.routes.permission_routes import permission_bp
     from app.routes.auth_routes import auth_bp
-    from app.routes.transaction_routes import transaction_bp
+    from app.routes.category_routes import category_bp
     
     app.register_blueprint(user_bp)
     app.register_blueprint(role_bp)
     app.register_blueprint(permission_bp)
     app.register_blueprint(auth_bp)
-    app.register_blueprint(transaction_bp)
+    app.register_blueprint(category_bp)
 
     # 👇 Add this block to "/" goes to the users list
     @app.route("/")
     def home():
-        return redirect(url_for('transaction.list_transactions'))
+        return redirect(url_for('categories.index'))
 
     # Create tables
     with app.app_context():
         from app.models.user import User # noqa F401
         from app.models.role import Role
         from app.models.permission import Permission
-        from app.models.transaction import Transaction
+        from app.models.expense_budget import(
+            Category, Budget, Expense, Rule
+        )
         db.create_all()
 
     return app
