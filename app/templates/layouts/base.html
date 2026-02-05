@@ -14,82 +14,100 @@
         {% block extra_css %}{% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    RBAC Demo
+        <div class="container-fluid">
+        <div class="row min-vh-100">
+
+            <!-- Sidebar -->
+            <nav class="col-12 col-md-3 col-lg-2 bg-primary text-white d-flex flex-column p-3">
+
+    <!-- Brand -->
+    <h5 class="mb-4">RBAC Demo</h5>
+
+    <!-- Scrollable menu -->
+    <div class="flex-grow-1 overflow-auto">
+        <ul class="nav nav-pills flex-column gap-1">
+            <li class="nav-item">
+                <a href="{{ url_for('users.index') }}"
+                   class="nav-link text-white {% if request.blueprint == 'users' %}active{% endif %}">
+                    Users
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
-                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggle-icon"></span>
-                </button>
+            </li>
 
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <!-- Users-->
-                        <li class="nav-item">
-                            <a href="{{ url_for('users.index') }}" 
-                               class="nav-link {% if request.blueprint == 'users' %}active {% endif %}" >
-                                Users
-                            </a>
-                        </li>
+            <li class="nav-item">
+                <a href="{{ url_for('roles.index') }}"
+                   class="nav-link text-white {% if request.blueprint == 'roles' %}active{% endif %}">
+                    Roles
+                </a>
+            </li>
 
-                        <!-- Role -->
-                        <li class="nav-item">
-                            <a href="{{ url_for('roles.index') }}" 
-                               class="nav-link {% if request.blueprint == 'roles' %}active{% endif %}">
-                                Roles
-                            </a>
-                        </li>
+            <li class="nav-item">
+                <a href="{{ url_for('permissions.index') }}"
+                   class="nav-link text-white {% if request.blueprint == 'permissions' %}active{% endif %}">
+                    Permissions
+                </a>
+            </li>
 
-                        <li class="nav-item">
-                            <a href="{{ url_for('permissions.index') }}" 
-                               class="nav-link {% if request.blueprint == 'permissions' %}active {% endif %}">
-                                Permission
-                            </a>
-                        </li>
+            <li class="nav-item">
+                <a href="{{ url_for('categories.index') }}"
+                   class="nav-link text-white {% if request.blueprint == 'categories' %}active{% endif %}">
+                    Categories
+                </a>
+            </li>
 
-                    </ul>
-                    <ul class="navbar-nav me-1 mb-2 mb-lg-0">
-                        {% if current_user.is_authenticated %}
-                        <li class="nav-item">
-                            <li class="nav-item">
-                                <span class="navbar text-white">
-                                    Logged in as: <strong class="ms-2">{{ current_user.full_name }}</strong>
-                                </span>
-                            </li>
-                        </li>
 
-                        <li class="nav-item">
-                            <a href="{{ url_for('auth.logout') }}" class="nav-link login-button">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item">
-                            <a href="{{ url_for('auth.login') }}" class="nav-link login-button">Login</a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
+            <li class="nav-item">
+                <a href="{{ url_for('budgets.index') }}"
+                   class="nav-link text-white {% if request.blueprint == 'budgets' %}active{% endif %}">
+                    Budgets
+                </a>
+            </li>
+
+            <!-- Add more items and it will scroll -->
+        </ul>
+    </div>
+
+    <!-- Bottom section -->
+    <div class="mt-auto pt-3 border-top border-light">
+        {% if current_user.is_authenticated %}
+            <div class="small mb-2">
+                Logged in as<br>
+                <strong>{{ current_user.full_name }}</strong>
             </div>
-        </nav>
 
-        <main class="container">
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% if messages %}
-                {% for category, message in messages %}
-                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {% endfor %}
-                {% endif %}
-            {% endwith %}
+            <a href="{{ url_for('auth.logout') }}"
+               class="btn btn-outline-light btn-sm w-100">
+                Logout
+            </a>
+        {% else %}
+            <a href="{{ url_for('auth.login') }}"
+               class="btn btn-outline-light btn-sm w-100">
+                Login
+            </a>
+        {% endif %}
+    </div>
+</nav>
 
-            {% block content %}{% endblock %}
-        </main>
+            <!-- Main content -->
+            <main class="col-12 col-md-9 col-lg-10 p-4">
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-        <script scr="{{ url_for('static', filename='js/main.js') }}"></script>
-        {% block extra_js %} {% endblock %}
-    </body>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                {% block content %}{% endblock %}
+            </main>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
 </html>

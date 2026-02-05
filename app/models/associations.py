@@ -12,3 +12,9 @@ role_permissions = db.Table(
     db.Column("role_id", db.Integer, db.ForeignKey("roles.id"), primary_key=True),
     db.Column("permission_id", db.Integer, db.ForeignKey("permissions.id"), primary_key=True),
 )
+
+category_budget = db.Table(
+    "category_budgets",
+    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
+    db.Column("budget_id", db.Integer, db.ForeignKey("budgets.id"), primary_key=True)
+)

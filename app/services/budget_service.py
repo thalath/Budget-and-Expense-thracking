@@ -14,12 +14,12 @@ class BudgetService:
     @staticmethod
     def create_Budget(data: dict, category_id: Optional[int] = None) -> Budget:
         budget = Budget(
-            amount = data["amount"]
+            amount = data["amount"],
         )
         if category_id:
             c = db.session.get(Category, category_id)
             if c:
-                budget.category_id = [c]
+                budget.categories = [c]
         db.session.add(budget)
         db.session.commit()
         return budget
@@ -30,7 +30,7 @@ class BudgetService:
         if category_id:
             c = db.session.get(Category, category_id)
             if c:
-                budget.category_id = [c]
+                budget.categories = [c]
                 
         db.session.commit()
         return budget

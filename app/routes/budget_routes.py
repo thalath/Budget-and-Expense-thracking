@@ -79,5 +79,5 @@ def delete(budget_id:int):
 
     BS.delete(budget)
     flash("Category delete succesfully", "success")
-    return redirect(url_for("categories.index"))
+    return redirect(url_for("budgets.index"))
 

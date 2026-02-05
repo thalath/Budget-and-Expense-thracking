@@ -9,7 +9,7 @@ def _category_choice():
     return [
         (c.id, c.name)
         for c in db.session.scalars(
-            db.select(Category).order_by(Category.name)
+            db.select(Category).order_by(Category.id)
         )
     ]
     
@@ -48,14 +48,14 @@ class BudgetEditForm(FlaskForm):
     
     submit = SubmitField("Update")
     
-    def __init__(self, original_category: Budget, *args, **kwargs):
+    def __init__(self, original_budget: Budget, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.original_category = original_category
+        self.original_category = original_budget
         self.category_id.choices = _category_choice()
         
         if not self.is_submitted():
             if self.original_category.category_id:
-                self.category_id.data = original_category.category_id[0].id
+                self.category_id.data = original_budget.category_id[0].id
             else:
                 self.category_id.data = None
 
