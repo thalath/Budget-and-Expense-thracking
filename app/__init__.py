@@ -14,7 +14,7 @@ def create_app(config_class: type[Config] = Config):
 
     # Flask-Login settings
     login_manager.login_view = "auth.login"
-    login_manager.login_message = "Please log in to access this page"
+    login_manager.login_message = "Please Sign In to access the System"
     login_manager.login_message_category = "warning"
 
     @login_manager.user_loader
