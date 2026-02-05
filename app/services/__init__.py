@@ -4,7 +4,7 @@ from app.services.permission_service import Permission
 from app.services.expert_engine import analyze_category
 from app.services.category_service import Category
 from app.services.budget_service import Budget
-
+from app.services.expense_service import Expense
 
 __all__ = [
     "UserService",
@@ -12,5 +12,6 @@ __all__ = [
     "Permission",
     "Category",
     "analyze_category",
-    "Budget"
+    "Budget",
+    "Expense"
 ]

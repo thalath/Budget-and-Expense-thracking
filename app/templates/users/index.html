@@ -41,9 +41,9 @@
                 <td>
                     {% if user.roles %}
                     {{ user.roles[0].name }}
-                    {% if user.roles|length > 1 %}
-                        <span class="text-warning small">(multiple)</span>
-                    {% endif %}
+                        {% if user.roles|length > 1 %}
+                            <span class="text-warning small">(multiple)</span>
+                        {% endif %}
                     {% else %}
                         <span class="text-muted">No role</span>
                     {% endif %}

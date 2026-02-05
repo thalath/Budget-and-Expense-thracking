@@ -9,7 +9,7 @@ def _category_choice():
     return [
         (c.id, c.name)
         for c in db.session.scalars(
-            db.select(Category).order_by(Category.id)
+            db.select(Category).order_by(Category.name)
         )
     ]
     

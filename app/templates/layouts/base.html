@@ -65,6 +65,13 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item">
+                                <a href="{{ url_for('expenses.index') }}"
+                                class="nav-link text-white {% if request.blueprint == 'expenses' %}active{% endif %}">
+                                    Expense
+                                </a>
+                            </li>
+
                             <!-- Add more items and it will scroll -->
                         </ul>
                     </div>

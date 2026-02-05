@@ -24,7 +24,6 @@ def detail(user_id: int):
 
 @user_bp.route("/create", methods=["GET", "POST"])
 @login_required
-
 def create():
         
     form = UserCreateForm()

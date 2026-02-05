@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% block title %}Expense Tracking{% endblock  %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Expense Detail</h1>
+    <div>
+        <a href="{{ url_for('expenses.edit', expense_id=expense.id) }}" 
+           class="btn btn-sm btn-outline-secondary">Edit</a>
+        <a href="{{ url_for('expenses.index') }}" 
+           class="btn btn-sm btn-outline-primary">Back to list</a>
+    </div>
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Expense ID</dt>
+    <dd class="col-sm-9">{{ expense.id }}</dd>
+
+    <dt class="col-sm-3">Category</dt>
+    {% if expense.categories %}
+    <dd class="col-sm-9">{{ expense.categories }}</dd>
+    {% else %}
+    <dd class="col-sm-9">No Category</dd>
+    {% endif %}
+
+    
+
+    <dt class="col-sm-3">Amount</dt>
+    <dd class="col-sm-9">{{ expense.amount }}</dd>
+
+    <dt class="col-sm-3">Created at</dt>
+    <dd class="col-sm-9">{{ expense.expense_date.strftime("%Y %m %d %H: %M") }}</dd>
+
+    <dt class="col-sm-3">Updated at</dt>
+    <dd class="col-sm-9">{{ expense.expense_updated_at.strftime("%Y %m %d %H: %M") }}</dd>
+</dl>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layouts/base.html" %}
+{% block title %}Delete Expense{% endblock  %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h3 class="h4 text-danger">Confirm Delete</h3>
+        
+        <p class="mt-3">Are you sure you want to delete the following Expense?</p>
+
+        <ul class="list-group mb-3">
+            <li class="list-group-item"><strong>Expense ID: </strong>{{ expense.id }}</li>
+            <li class="list-group-item"><strong>Expense Category: </strong>{{ expense.categories[0].name }}</li>
+            <li class="list-group-item"><strong>Expense Amount: </strong>{{ expense.amount }}</li>
+            <li class="list-group-item"><strong>Expense Date: </strong>{{ expense.expense_date.strftime("%Y %m %d %H: %M") }}</li>
+        </ul>
+
+        <form method="POST" action="{{ url_for('expenses.delete', expense_id=expense.id) }}">
+            {{ form.hidden_tag() }}
+            {{ form.submit(class="btn btn-danger") }}
+            <a href="{{ url_for('expenses.index') }}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "layouts/base.html" %}
+{% block title %}Edit Expense{% endblock  %}
+
+{% block content %}
+<h1 class="h3 mb-3"> Edit Expense </h1>
+<form method="post", novalidate>
+     {% include "expenses/_form.html" %}
+</form>
+{% endblock %}

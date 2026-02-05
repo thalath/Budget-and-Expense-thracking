@@ -18,3 +18,9 @@ category_budget = db.Table(
     db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
     db.Column("budget_id", db.Integer, db.ForeignKey("budgets.id"), primary_key=True)
 )
+
+category_expenses = db.Table(
+    "category_expenses",
+    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
+    db.Column("expense_id", db.Integer, db.ForeignKey("expenses.id"), primary_key=True)
+)

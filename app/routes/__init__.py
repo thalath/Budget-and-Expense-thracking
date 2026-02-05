@@ -4,3 +4,4 @@ from app.routes.permission_routes import permission_bp
 from app.routes.auth_routes import auth_bp
 from app.routes.category_routes import category_bp
 from app.routes.budget_routes import budget_bp
+from app.routes.expense_routes import expense_bp
