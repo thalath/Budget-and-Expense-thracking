@@ -1,6 +1,6 @@
 body {
     background-color: #f5f5f5;
-    font-family: Arial; margin: 10px;
+    font-family: Arial;
 }
 
 main.container {
@@ -50,3 +50,14 @@ table, th{
 }
 
 nav a { margin-right: 10px; }
+
+.title{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.nav-item{
+    font-size: 20px;
+    
+}
