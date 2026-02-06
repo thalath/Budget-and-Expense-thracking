@@ -18,7 +18,7 @@
 
     <dt class="col-sm-3">Category</dt>
     {% if expense.categories %}
-    <dd class="col-sm-9">{{ expense.categories }}</dd>
+    <dd class="col-sm-9">{{ expense.categories[0].name }}</dd>
     {% else %}
     <dd class="col-sm-9">No Category</dd>
     {% endif %}
