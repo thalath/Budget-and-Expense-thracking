@@ -1,0 +1,67 @@
+{{ form.hidden_tag() }}
+
+<div class="mb-3">
+    {{ form.id.label(class="form-label") }}
+    {{ form.id(class="form-control") }}
+    {% if form.id.errors %}
+    <div class="text-danger small">
+        {% for error in form.id.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.conditions.label(class="form-label") }}
+    {{ form.conditions(class="form-control") }}
+    {% if form.conditions.errors %}
+    <div class="text-danger small">
+        {% for error in form.conditions.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.conclusion.label(class="form-label") }}
+    {{ form.conclusion(class="form-control") }}
+    {% if form.conclusion.errors %}
+    <div class="text-danger small">
+        {% for error in form.conclusion.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+
+<div class="mb-3">
+    {{ form.certainty.label(class="form-label") }}
+    {{ form.certainty(class="form-control", type="number") }}
+    {% if form.certainty.errors %}
+    <div class="text-danger small">
+        {% for error in form.certainty.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div class="mb-3">
+    {{ form.explanation.label(class="form-label") }}
+    {{ form.explanation(class="form-control") }}
+    {% if form.explanation.errors %}
+    <div class="text-danger small">
+        {% for error in form.explanation.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<div>
+    {{ form.submit(class="btn btn-primary") }}
+    <a href="{{ url_for('rules.index') }}" class="btn btn-secondary"> Cancel</a>
+</div>

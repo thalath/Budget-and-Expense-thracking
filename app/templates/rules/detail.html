@@ -1,0 +1,34 @@
+{% extends "layouts/base.html" %}
+{% block title %}Rule {{ rule.id }}{% endblock  %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">Rule Detail</h1>
+    <div>
+        <a href="{{ url_for('rules.edit', rule_id=rule.id) }}" 
+           class="btn btn-sm btn-outline-secondary">Edit</a>
+        <a href="{{ url_for('rules.index') }}" 
+           class="btn btn-sm btn-outline-primary">Back to list</a>
+    </div>
+</div>
+
+<dl class="row">
+    <dt class="col-sm-3">Rule ID</dt>
+    <dd class="col-sm-9">{{ rule.id }}</dd>
+
+    <dt class="col-sm-3">Conditions</dt>
+    <dd class="col-sm-9">{{ rule.conditions }}</dd>
+
+    <dt class="col-sm-3">Conclusions</dt>
+    <dd class="col-sm-9">{{ rule.conclusion }}</dd>
+
+    <dt class="col-sm-3">Certainty</dt>
+    <dd class="col-sm-9">{{ rule.certainty }}</dd>
+
+    <dt class="col-sm-3">Explanation</dt>
+    <dd class="col-sm-9">{{ rule.explanation }}</dd>
+
+   
+</dl>
+
+{% endblock %}

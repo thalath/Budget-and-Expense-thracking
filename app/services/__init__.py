@@ -5,6 +5,7 @@ from app.services.expert_engine import analyze_category
 from app.services.category_service import Category
 from app.services.budget_service import Budget
 from app.services.expense_service import Expense
+from app.services.rule_services import Rule
 
 __all__ = [
     "UserService",
@@ -13,5 +14,6 @@ __all__ = [
     "Category",
     "analyze_category",
     "Budget",
-    "Expense"
+    "Expense",
+    "Rule",
 ]

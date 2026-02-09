@@ -15,12 +15,13 @@ class ExpenseService:
     @staticmethod
     def create(data: dict, category_id: Optional[int] = None) -> Expense:
         expense = Expense(
+            id = data["id"],
             amount = data["amount"],
         )
         if category_id:
             c = db.session.get(Category, category_id)
             if c:
-                expense.category_id = [c]
+                expense.categories = [c]
 
         db.session.add(expense)
         db.session.commit()
@@ -28,6 +29,7 @@ class ExpenseService:
     
     @staticmethod
     def update(expense: Expense, data: dict, category_id: Optional[int] = None) -> Expense:
+        expense.id = data["id"]
         expense.amount = data["amount"] or 0
         if category_id:
             c = db.session.get(Category, category_id)

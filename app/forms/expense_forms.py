@@ -14,6 +14,13 @@ def _category_choices():
     
     
 class ExpenseCreateForm(FlaskForm):
+    
+    id = StringField(
+        "ID",
+        validators=[DataRequired(), Length(min=2, max=10, message="The value must be less than 10 characters")],
+        render_kw={"placeholder": "Enter fact id e.g. f1"}
+    )
+    
     amount = FloatField(
         "Enter Amount",
         validators=[DataRequired()],
@@ -34,6 +41,12 @@ class ExpenseCreateForm(FlaskForm):
         self.category_id.choices = _category_choices()
         
 class ExpenseEditForm(FlaskForm):
+    id = StringField(
+        "ID",
+        validators=[DataRequired(), Length(min=2, max=10, message="The value must be less than 10 characters")],
+        render_kw={"placeholder": "Enter fact id e.g. f1"}
+    )
+    
     amount = FloatField(
         "Enter Amount",
         validators=[DataRequired()],

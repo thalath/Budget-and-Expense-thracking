@@ -13,7 +13,7 @@ def index():
     return render_template("expenses/index.html", expenses=expenses)
 
 
-@expense_bp.route("/<int:expense_id>")
+@expense_bp.route("/<expense_id>")
 def detail(expense_id: int):
     expense = ess.get_by_id(expense_id)
     if expense is None:
@@ -25,6 +25,7 @@ def create():
     form = ECF()
     if form.validate_on_submit():
         data = {
+            "id": form.id.data,
             "amount": form.amount.data
         }
         
@@ -35,7 +36,7 @@ def create():
     
     return render_template("expenses/create.html", form=form)
 
-@expense_bp.route("/<int:expense_id>/edit", methods=["GET", "POST"])
+@expense_bp.route("/<expense_id>/edit", methods=["GET", "POST"])
 def edit(expense_id: int):
     expense = ess.get_by_id(expense_id)
 
@@ -46,6 +47,7 @@ def edit(expense_id: int):
 
     if form.validate_on_submit():
         data = {
+            "id": form.id.data,
             "amount": form.amount.data,
         }
         
@@ -58,7 +60,7 @@ def edit(expense_id: int):
     return render_template("expenses/edit.html", form=form, expense=expense)
 
 
-@expense_bp.route("/<int:expense_id>/delete", methods=["GET"])
+@expense_bp.route("/<expense_id>/delete", methods=["GET"])
 def delete_confirm(expense_id: int):
     expense = ess.get_by_id(expense_id)
     if expense is None:
@@ -68,7 +70,7 @@ def delete_confirm(expense_id: int):
     return render_template("expenses/delete_confirm.html", expense=expense, form=form)
 
     
-@expense_bp.route("/<int:expense_id>/delete", methods=["POST"]) # methods post: confirm deleted data from database 
+@expense_bp.route("/expense_id>/delete", methods=["POST"]) # methods post: confirm deleted data from database 
 @login_required
 def delete(expense_id: int):
     expense = ess.get_by_id(expense_id)

@@ -13,6 +13,7 @@
         <thead class="table-light">
             <tr>
                 <th style="width: 50px">#</th>
+                <th>ID</th>
                 <th>Category</th>
                 <th>Amount</th>
                 <th>Expense Date</th>
@@ -24,6 +25,7 @@
             {% for expense in expenses %}
             <tr>
                 <td>{{ loop.index }}</td>
+                <td>{{ expense.id }}</td>
 
                 <td>
                     <a 
@@ -44,8 +46,8 @@
                 <td>
                     {{ expense.amount }}
                 </td>
-                <td>{{ expense.expense_date.strftime("%Y %m %d %H: %M") }}</td>
-                <td>{{ expense.expense_updated_at.strftime("%Y %m %d %H: %M") }}</td>
+                <td>{{ expense.expense_date.strftime("%m %d %Y %H hour %M minutes") }}</td>
+                <td>{{ expense.expense_updated_at.strftime("%m %d %Y %H hour %M minutes") }}</td>
 
                 <td class="text-end">
                     <!-- Edit -->

@@ -29,6 +29,7 @@ def create_app(config_class: type[Config] = Config):
     from app.routes.category_routes import category_bp
     from app.routes.budget_routes import budget_bp
     from app.routes.expense_routes import expense_bp
+    from app.routes.rule_routes import rule_bp
     
     app.register_blueprint(user_bp)
     app.register_blueprint(role_bp)
@@ -37,6 +38,7 @@ def create_app(config_class: type[Config] = Config):
     app.register_blueprint(category_bp)
     app.register_blueprint(budget_bp)
     app.register_blueprint(expense_bp)
+    app.register_blueprint(rule_bp)
 
     # 👇 Add this block to "/" goes to the users list
     @app.route("/")
