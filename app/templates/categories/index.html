@@ -15,6 +15,7 @@
                 <th style="width: 50px">#</th>
                 <th>Category ID</th>
                 <th>Category Name</th>
+                <th>Description</th>
             </tr>
         </thead>
         <tbody>
@@ -32,7 +33,8 @@
                     {{ category.name }}
                     </a>
                 </td>
-
+            
+                <td>{{ category.description }}</td>
                 <td class="text-end">
                     <!-- Edit -->
                     <a 

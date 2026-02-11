@@ -12,7 +12,7 @@ class Budget(db.Model):
     having_fun = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(255))
     
-    expense_id = db.relationship("Expenses", secondary=expense_budgets, back_populates="budgets")
+    expenses = db.relationship("Expense", secondary=expense_budgets, back_populates="budgets")
     
     def __repr__(self):
         return f"<Budget '{self.name}'>"

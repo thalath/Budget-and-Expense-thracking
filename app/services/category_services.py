@@ -16,7 +16,7 @@ class CategoryService:
     def create(data: dict) -> Category:
         category = Category(
             name = data['name'],
-            description = data['description']
+            description = data['description'] or '_'
         )
         
         db.session.add(category)

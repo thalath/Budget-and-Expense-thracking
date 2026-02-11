@@ -26,11 +26,17 @@ def create_app(config_class: type[Config] = Config):
     from app.routes.role_routes import role_bp
     from app.routes.permission_routes import permission_bp
     from app.routes.auth_routes import auth_bp
+    from app.routes.category_routes import category_bp
+    from app.routes.expense_routes import expense_bp
     
     app.register_blueprint(user_bp)
     app.register_blueprint(role_bp)
     app.register_blueprint(permission_bp)
     app.register_blueprint(auth_bp)
+    app.register_blueprint(category_bp)
+    app.register_blueprint(expense_bp)
+    
+    
     # 👇 Add this block to "/" goes to the users list
     @app.route("/")
     def home():
@@ -41,6 +47,8 @@ def create_app(config_class: type[Config] = Config):
         from app.models.user import User # noqa F401
         from app.models.role import Role
         from app.models.permission import Permission
+        from app.models.categories import Category
+        from app.models.expenses import Expense
         db.create_all()
 
     return app

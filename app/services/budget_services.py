@@ -45,7 +45,7 @@ class BudgetService:
         if expense_id:
             e = db.session.get(Expense, expense_id)
             if e:
-                budget.expense_id = [e]
+                budget.expenses = [e]
 
         db.session.commit()
         return budget

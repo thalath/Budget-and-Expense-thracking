@@ -7,7 +7,7 @@ class ExpenseService:
     
     @staticmethod
     def get_all() -> List[Expense]:
-        return Expense.query.order_by(Expense.category_id.asc()).all()
+        return Expense.query.order_by(Expense.id.asc()).all()
 
     @staticmethod
     def get_by_id(expense_id: int) -> Optional[Expense]:
@@ -23,7 +23,7 @@ class ExpenseService:
         if category_id:
             c = db.session.get(Category, category_id)
             if c:
-                expense.category_id = [c]
+                expense.categories = [c]
                 
         db.session.add(expense)
         db.session.commit()
@@ -31,13 +31,13 @@ class ExpenseService:
     
     @staticmethod
     def update(expense: Expense, data: dict, category_id: Optional[int] = None) -> Expense:
-        expense.category_id =data.get("category_id")
-        expense.certainty = data.get("certainty")
+        expense.certainty = data.get("certainty", 0.0)
+        expense.description = data.get("description")
         
         if category_id:
             c = db.session.get(Category, category_id)
             if c:
-                expense.category_id = [c]
+                expense.categories = [c]
                 
         db.session.commit()
         return expense

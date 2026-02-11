@@ -14,7 +14,7 @@ def _category_choices():
     ]
     
 class ExpenseCreateForm(FlaskForm):
-    category_id = SelectField(
+    categories = SelectField(
         "Category",
         validators=[DataRequired()],
         coerce=int,
@@ -36,10 +36,10 @@ class ExpenseCreateForm(FlaskForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.category_id.choices = _category_choices()
+        self.categories.choices = _category_choices()
     
 class ExpenseEditForm(FlaskForm):
-    category_id = SelectField(
+    categories = SelectField(
         "Category",
         validators=[DataRequired()],
         coerce=int,
@@ -62,7 +62,7 @@ class ExpenseEditForm(FlaskForm):
     def __init__(self,original_expense: Expense, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.original_expense = original_expense
-        self.category_id.choices = _category_choices()
+        self.categories.choices = _category_choices()
         
 class ExpenseConfirmDelete(FlaskForm):
     submit = SubmitField("Confirm Delete")
