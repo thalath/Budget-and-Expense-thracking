@@ -1,13 +1,13 @@
 from app.models.user import User
 from app.models.role import Role
 from app.models.permission import Permission
-from app.models.expense_budget import Budget, Expense, Rule, Category
+from app.models.categories import Category
+from app.models.expenses import Expense
 
 __all__ = [
     "User", 
     "Role", 
     "Permission", 
-    "Rule",
     "Budget",
     "Expense",
     "Category",

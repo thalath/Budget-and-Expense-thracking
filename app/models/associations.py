@@ -13,14 +13,14 @@ role_permissions = db.Table(
     db.Column("permission_id", db.Integer, db.ForeignKey("permissions.id"), primary_key=True),
 )
 
-category_budget = db.Table(
-    "category_budgets",
-    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
-    db.Column("budget_id", db.Integer, db.ForeignKey("budgets.id"), primary_key=True)
+expense_categories = db.Table(
+    "expense_categories",
+    db.Column("expense_id", db.Integer, db.ForeignKey("expenses.id"), primary_key=True),
+    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True)
 )
 
-category_expenses = db.Table(
-    "category_expenses",
-    db.Column("category_id", db.Integer, db.ForeignKey("categories.id"), primary_key=True),
-    db.Column("expense_id", db.Integer, db.ForeignKey("expenses.id"), primary_key=True)
+expense_budgets = db.Table(
+    "expense_budgets",
+    db.Column("expense_id", db.Integer, db.ForeignKey("expenses.id"), primary_key=True),
+    db.Column("budget_id", db.Integer, db.ForeignKey("budgets.id"), primary_key=True)
 )
