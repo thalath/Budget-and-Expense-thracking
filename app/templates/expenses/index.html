@@ -19,7 +19,7 @@
                 <th>Description</th>
                 <th>Expense Date</th>
                 <th>Expense Update Date</th>
-                <th class="text-end" style="width: 160px">CRT</th>
+                <th class="text-end" style="width: 160px">RUD</th>
             </tr>
         </thead>
         <tbody>
@@ -53,6 +53,13 @@
 
                 <td class="text-end">
                     <!-- Edit -->
+                    <a 
+                        href="{{ url_for('expenses.detail', expense_id = expense.id) }}"
+                        class="btn btn-sm btn-primary"
+                        title="Edit"
+                    >
+                    👁️
+                    </a>
                     <a 
                         href="{{ url_for('expenses.edit', expense_id = expense.id) }}"
                         class="btn btn-sm btn-warning"

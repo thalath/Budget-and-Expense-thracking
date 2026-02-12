@@ -52,9 +52,9 @@ def edit(category_id: int):
             "name": form.name.data,
             "description": form.description.data
         }
-        CategoryService.update(data)
-        flash(f"Category '{category.name}'")
-        return redirect(url_for('categories.index.html'))
+        CategoryService.update(category, data)
+        flash(f"Category '{category.name}'", "success")
+        return redirect(url_for('categories.index'))
 
     return render_template("categories/edit.html", category=category, form=form)
 

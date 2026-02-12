@@ -26,7 +26,7 @@ class CategoryService:
     @staticmethod
     def update(category: Category, data: dict) -> Category:
         category.name = data["name"]
-        category.description = data.get("descriptions", "")
+        category.description = data["description"]
 
         db.session.commit()
         return category

@@ -25,14 +25,14 @@
 
     
 
-    <dt class="col-sm-3">Amount</dt>
-    <dd class="col-sm-9">{{ expense.amount }}</dd>
+    <dt class="col-sm-3">Certainty</dt>
+    <dd class="col-sm-9">{{ expense.certainty }}</dd>
 
     <dt class="col-sm-3">Created at</dt>
-    <dd class="col-sm-9">{{ expense.expense_date.strftime("%Y %m %d %H: %M") }}</dd>
+    <dd class="col-sm-9">{{ expense.created_at }}</dd>
 
     <dt class="col-sm-3">Updated at</dt>
-    <dd class="col-sm-9">{{ expense.expense_updated_at.strftime("%Y %m %d %H: %M") }}</dd>
+    <dd class="col-sm-9">{{ expense.updated_at }}</dd>
 </dl>
 
 {% endblock %}
