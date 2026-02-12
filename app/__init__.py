@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for
 from config import Config
 from extensions import db, csrf, login_manager
 from app.models.user import User

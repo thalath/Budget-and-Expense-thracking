@@ -12,7 +12,7 @@
             <li class="list-group-item"><strong>Expense ID: </strong>{{ expense.id }}</li>
             <li class="list-group-item"><strong>Expense Category: </strong>{{ expense.categories[0].name }}</li>
             <li class="list-group-item"><strong>Expense Amount: </strong>{{ expense.amount }}</li>
-            <li class="list-group-item"><strong>Expense Date: </strong>{{ expense.expense_date.strftime("%Y %m %d %H: %M") }}</li>
+            <li class="list-group-item"><strong>Expense Date: </strong>{{ expense.created_at }}</li>
         </ul>
 
         <form method="POST" action="{{ url_for('expenses.delete', expense_id=expense.id) }}">
