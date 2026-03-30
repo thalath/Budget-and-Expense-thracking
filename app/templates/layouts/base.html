@@ -71,7 +71,7 @@
                         {% if current_user.is_authenticated %}
                             <div class="small mb-2">
                                 Logged in as<br>
-                                <strong>{{ current_user.full_name }}</strong>
+                                <strong title="Username">{{ current_user.full_name }}</strong>
                             </div>
 
                             <a href="{{ url_for('auth.logout') }}"

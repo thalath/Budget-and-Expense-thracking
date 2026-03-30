@@ -8,18 +8,21 @@
 </div>
 
 {% if permissions %}
-    <table class="table table-striped table-bordered align-middle shadow-sm">
+    <table >
         <thead>
             <tr>
+                <th>#</th>
                 <th>Code</th>
                 <th>Name</th>
                 <th>Module</th>
-                <th class="text-end"></th>
+                <th class="text-end">Action</th>
             </tr>
         </thead>
         <tbody>
             {% for perm in permissions %}
+
             <tr>
+                <td>{{ loop.index }}</td>
                 <td>
                     <a href="{{ url_for('permissions.detail', permission_id=perm.id) }}">
                         {{ perm.code }}
