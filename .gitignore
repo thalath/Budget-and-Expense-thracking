@@ -1,0 +1,33 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+instance/
+certs/
+
+
+# ================= Python Virtual Environments & Dependencies ==========================
+.venv/
+.venvBET/
+pip.log.txt
+
+# ======================== Python Bytecodes & Cache =============
+__pacache__/
+*.py[code]
+*.py.class
+
+
+# IDE
+
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njproj
+*.sln
+*.swq
+
+# ========== OS files ==========
+.DB_Store
+.Thumbs.db

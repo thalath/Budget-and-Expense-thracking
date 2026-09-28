@@ -59,7 +59,7 @@ def register():
             errors.append("This username is already taken.")
         
         if email and User.query.filter_by(email=email).first():
-            errors.append("This emial is already taken.")
+            errors.append("This email is already registered.")
             
             
         if errors:
